@@ -1,0 +1,181 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var rxjs_1 = require("rxjs");
+var operators_1 = require("rxjs/operators");
+var DataService = /** @class */ (function () {
+    function DataService() {
+        this._items = new Array({
+            id: 1,
+            image: "https://cdn.gallerystore.pl/works//w777-h700/jacek-malinowski-toskania-val-d-orcia-1-malarstwo-olejne.jpg",
+            title: "Toskania",
+            author: "Jacek Malinowski",
+            location: "Gallerystore",
+            description: "Obraz jest wyjątkową ekspresją artysty. Praca jest dedykowanym portretem Cmili Cobello. Abstrakcyjna gra świateł i cienia za pomocą 4 kolorów oddaje złożoność jakie chciał osiągnąć artysta oraz prosty panton barw które budują całą narrację. Dużą wagę można zaobserwować w detalu, ponieważ jest to grafika wektorowa możemy dostrzec nietypowy detal włosów oraz światło, które rozświetla końcówki. Obraz przedstawia piękno kobiety, oraz drzemiącą magię jej temperamentu. Zimne barwy oddają chłód który symbolizuje żal między uczuciem wynikającym z rozstania.",
+            date: "2018",
+            popularity: 82,
+            viewed: false,
+            liked: false
+        }, {
+            id: 2,
+            image: "https://cdn.gallerystore.pl/works//w777-h700/joanna-sulek-malinowska-chromosfera-iii-akryl.jpg",
+            title: "Chromosfera III",
+            author: "Joanna Sułek-Malinowska",
+            location: "Gallerystore",
+            description: "Cykl abstrakcji „Chromosfery” inspirowany jest słońcem, przestrzenią kosmiczną oraz zjawiskami meteorologicznymi. Czarne pasy sugerują ograniczenie mieszkańca ziemskiego, który nie może wznieść się ponad to co widzi z dołu. Barwny środek z symbolicznym słońcem lub planetą zmienia formy oraz kolory w zależności od pory dnia. Obrazy budowane są za pomocą płynnych linii, przenikających się na płaszczyźnie. Często układy przestrzenne rozświetlane są światłem padającym z nieoczywistego źródła. Uwydatniają się aby za chwilę zapaść się w czerń. Powierzchnia obrazów poprzez wielokrotne, precyzyjne nakładanie płaskiej plamy, zdaje się być idealnie gładka. Delikatne linie podkreślają kruchość zjawiska a jednocześnie są łącznikiem pasa barw z czarną przestrzenią.",
+            date: "2016",
+            popularity: 41,
+            viewed: false,
+            liked: false
+        }, {
+            id: 3,
+            image: "https://cdn.gallerystore.pl/works//w777-h700/pawel-gorski-slimak-akryl.jpg",
+            title: "Ślimak",
+            author: "Paweł Górski",
+            location: "Gallerystore",
+            description: "Abstrakcyjna przyroda, piekno otaczającego nas świata, współistnienie. Akstrakcyjny, pełen kolorów obraz akrylowy na płótnie lnianym wykonany w technice enkaustyki. Enkaustyka to technika pracochłonna, która wymaga od twórcy nakładania farb na gorąco w spoiwie wosku pszczelego lub oleju. Dzięki takim zabiegom pozwala uzyskać trwałe i odporne na wilgoć rezultaty, a także zachować głębię i blask zastosowanej palety kolorystycznej. Praca doda chatakteru przestronnym wnetrzom. Obraz sprawdzi się w biurze oraz w dużym, jasnym salonie.",
+            date: "2015",
+            popularity: 55,
+            viewed: false,
+            liked: false
+        }, {
+            id: 4,
+            image: "https://cdn.gallerystore.pl/works//w777-h700/pawel-porada-dama-malarstwo-olejne.jpg",
+            title: "Dama",
+            author: "Paweł Porada",
+            location: "Gallerystore",
+            description: "Obraz \"dama\" został namalowany na płótnie 3D - grubsza rama, o wymiarach 50x50cm, farbami olejnymi. Malowidło przedstawia kobietę z klasą na tle z bogatą ornamentyką. Bardzo kolorowy, zbudowany z prostych form i kształtów. Klimatem lekko nawiązuje do dawniejszych epok lub do damy z talii kart. Portret idealnie zagra w każdym wnętrzu ale i również podkreśli karciane upodobania, hobby historyczne lub rozrywkowy charakter osoby która go zakupi. Sygnowany z przodu nazwiskiem i datą powstania. Wykonany w pojedynczym egzemplarzu co zwiększa jego wartość kolekcjonerską.",
+            date: "2018",
+            popularity: 63,
+            viewed: false,
+            liked: false
+        }, {
+            id: 5,
+            image: "https://cdn.gallerystore.pl/works//w777-h700/iza-kostiukow-slady-4-malarstwo-olejne.jpg",
+            title: "Ślady 4",
+            author: "Iza Kostiukow",
+            location: "Gallerystore",
+            description: "Abstrakcyjny obraz namalowany w technice olejnej. praca nie wymaga ramy , krawędzie płótna są zamalowane. Praca jest zabezpieczona werniksem satynowym. obraz jest sygnowany z tyłu obraz jest częścią cyklu malarskiego \" Ślady\", powstałego w 2014 roku. Praca może być dobrym prezentem np. na ślub.",
+            date: "2014",
+            popularity: 15,
+            viewed: false,
+            liked: false
+        }, {
+            id: 6,
+            image: "https://i.pinimg.com/736x/63/7a/a9/637aa953aa91cd0eb3a1b35ad065b2e1--romanticism-vitamin.jpg",
+            title: "O śmierci sąsiada",
+            author: "Zbigniew Rogalski",
+            location: "Raster gallery",
+            description: "Obraz zainspirowany autentycznym zdarzeniem - śmiercią sąsiada malarza. Ciało zmarłego zostało odnalezione dopiero po kilku dniach od zgonu w mieszkaniu, które przylegało do pracowni i mieszkania Rogalskiego.",
+            date: "2017",
+            popularity: 21,
+            viewed: false,
+            liked: false
+        }, {
+            id: 7,
+            image: "https://img1.onebid.pl/img/216/33889_1b.jpg",
+            title: "Poster for \"JAZZ Jamboree 70\"",
+            author: "Jan Młodożeniec",
+            location: "Ostoya",
+            description: "Obraz \"dama\" został namalowany na płótnie 3D - grubsza rama, o wymiarach 50x50cm, farbami olejnymi. Malowidło przedstawia kobietę z klasą na tle z bogatą ornamentyką. Bardzo kolorowy, zbudowany z prostych form i kształtów. Klimatem lekko nawiązuje do dawniejszych epok lub do damy z talii kart. Portret idealnie zagra w każdym wnętrzu ale i również podkreśli karciane upodobania, hobby historyczne lub rozrywkowy charakter osoby która go zakupi. Sygnowany z przodu nazwiskiem i datą powstania. Wykonany w pojedynczym egzemplarzu co zwiększa jego wartość kolekcjonerską.",
+            date: "1970",
+            popularity: 98,
+            viewed: false,
+            liked: false
+        }, {
+            id: 8,
+            image: "https://uploads3.wikiart.org/00145/images/wilhelm-sasnal/shoah-forest-2003.jpg!Large.jpg",
+            title: "Forest",
+            author: "Wilhelm Sasnal",
+            location: "Whitechapel Gallery",
+            description: "Obraz \"dama\" został namalowany na płótnie 3D - grubsza rama, o wymiarach 50x50cm, farbami olejnymi. Malowidło przedstawia kobietę z klasą na tle z bogatą ornamentyką. Bardzo kolorowy, zbudowany z prostych form i kształtów. Klimatem lekko nawiązuje do dawniejszych epok lub do damy z talii kart. Portret idealnie zagra w każdym wnętrzu ale i również podkreśli karciane upodobania, hobby historyczne lub rozrywkowy charakter osoby która go zakupi. Sygnowany z przodu nazwiskiem i datą powstania. Wykonany w pojedynczym egzemplarzu co zwiększa jego wartość kolekcjonerską.",
+            date: "2002",
+            popularity: 45,
+            viewed: false,
+            liked: false
+        }, {
+            id: 9,
+            image: "https://d5wt70d4gnm1t.cloudfront.net/media/a-s/articles/2243-818175819439/wilhelm-sasnal-900x450.png",
+            title: "Bathers at Asnieres,",
+            author: "Wilhelm Sasnal",
+            location: "Foksal Gallery Foundation Varsovie",
+            description: "Obraz \"dama\" został namalowany na płótnie 3D - grubsza rama, o wymiarach 50x50cm, farbami olejnymi. Malowidło przedstawia kobietę z klasą na tle z bogatą ornamentyką. Bardzo kolorowy, zbudowany z prostych form i kształtów. Klimatem lekko nawiązuje do dawniejszych epok lub do damy z talii kart. Portret idealnie zagra w każdym wnętrzu ale i również podkreśli karciane upodobania, hobby historyczne lub rozrywkowy charakter osoby która go zakupi. Sygnowany z przodu nazwiskiem i datą powstania. Wykonany w pojedynczym egzemplarzu co zwiększa jego wartość kolekcjonerską.",
+            date: "2010",
+            popularity: 81,
+            viewed: false,
+            liked: false
+        }, {
+            id: 10,
+            image: "https://cdn.gallerystore.pl/works//w777-h700/adam-twardowski-camila-grafika.jpg",
+            title: "Camila",
+            author: "Adam Twardowski",
+            location: "Gallerystore",
+            description: "Obraz jest wyjątkową ekspresją artysty. Praca jest dedykowanym portretem Cmili Cobello. Abstrakcyjna gra świateł i cienia za pomocą 4 kolorów oddaje złożoność jakie chciał osiągnąć artysta oraz prosty panton barw które budują całą narrację. Dużą wagę można zaobserwować w detalu, ponieważ jest to grafika wektorowa możemy dostrzec nietypowy detal włosów oraz światło, które rozświetla końcówki. Obraz przedstawia piękno kobiety, oraz drzemiącą magię jej temperamentu. Zimne barwy oddają chłód który symbolizuje żal między uczuciem wynikającym z rozstania.",
+            date: "2018",
+            popularity: 63,
+            viewed: false,
+            liked: false
+        }, {
+            id: 11,
+            image: "https://cdn.gallerystore.pl/works//w2000-h2000/anna-zabielska-akt-kobiecy-akwarela.jpg",
+            title: "Camila",
+            author: "Adam Twardowski",
+            location: "Gallerystore",
+            description: "Obraz jest wyjątkową ekspresją artysty. Praca jest dedykowanym portretem Cmili Cobello. Abstrakcyjna gra świateł i cienia za pomocą 4 kolorów oddaje złożoność jakie chciał osiągnąć artysta oraz prosty panton barw które budują całą narrację. Dużą wagę można zaobserwować w detalu, ponieważ jest to grafika wektorowa możemy dostrzec nietypowy detal włosów oraz światło, które rozświetla końcówki. Obraz przedstawia piękno kobiety, oraz drzemiącą magię jej temperamentu. Zimne barwy oddają chłód który symbolizuje żal między uczuciem wynikającym z rozstania.",
+            date: "2018",
+            popularity: 63,
+            viewed: false,
+            liked: false
+        });
+        this._items$ = new rxjs_1.BehaviorSubject(this.cloneItems());
+    }
+    DataService.prototype.getItems = function () {
+        return this._items$.getValue();
+    };
+    DataService.prototype.getItem = function (id) {
+        return this._items$.getValue().find(function (data) {
+            return data.id == id;
+        });
+    };
+    DataService.prototype.getIndex = function (item) {
+        return this.getItems().findIndex(function (element) { return element.id === item.id; });
+    };
+    DataService.prototype.getUnseenItems$ = function () {
+        return this._items$.asObservable()
+            .pipe(operators_1.map(function (items) { return items.filter(function (item) { return !item.viewed; }); }));
+    };
+    DataService.prototype.getUnseenItems = function () {
+        return this._items$.getValue().filter(function (item) { return !item.viewed; });
+    };
+    DataService.prototype.getLikedItems$ = function () {
+        return this._items$.asObservable()
+            .pipe(operators_1.map(function (items) { return items.filter(function (item) { return item.liked === true; }); }));
+    };
+    DataService.prototype.getLikedItems = function () {
+        return this._items$.getValue().filter(function (item) { return item.liked; });
+    };
+    DataService.prototype.updateItem = function (item) {
+        var items = this.getItems();
+        items[this.getIndex(item)] = item;
+        this._items$.next(items);
+    };
+    DataService.prototype.dislike = function (item) {
+        item.liked = false;
+        var items = this.getItems();
+        items[this.getIndex(item)] = item;
+        this._items$.next(items);
+    };
+    DataService.prototype.resetItems = function () {
+        this._items$.next(this.cloneItems());
+    };
+    DataService.prototype.cloneItems = function () {
+        return JSON.parse(JSON.stringify(this._items));
+    };
+    DataService = __decorate([
+        core_1.Injectable(),
+        __metadata("design:paramtypes", [])
+    ], DataService);
+    return DataService;
+}());
+exports.DataService = DataService;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZGF0YS5zZXJ2aWNlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiZGF0YS5zZXJ2aWNlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsc0NBQTJDO0FBQzNDLDZCQUFtRDtBQUNuRCw0Q0FBNkM7QUFpQjdDO0lBMklJO1FBeElRLFdBQU0sR0FBRyxJQUFJLEtBQUssQ0FDdEI7WUFDSSxFQUFFLEVBQUUsQ0FBQztZQUNMLEtBQUssRUFBRSwyR0FBMkc7WUFDbEgsS0FBSyxFQUFFLFVBQVU7WUFDakIsTUFBTSxFQUFFLGtCQUFrQjtZQUMxQixRQUFRLEVBQUUsY0FBYztZQUN4QixXQUFXLEVBQUUsNmlCQUE2aUI7WUFDMWpCLElBQUksRUFBRSxNQUFNO1lBQ1osVUFBVSxFQUFFLEVBQUU7WUFDZCxNQUFNLEVBQUUsS0FBSztZQUNiLEtBQUssRUFBRSxLQUFLO1NBQ2YsRUFDRDtZQUNJLEVBQUUsRUFBRSxDQUFDO1lBQ0wsS0FBSyxFQUFFLGdHQUFnRztZQUN2RyxLQUFLLEVBQUUsaUJBQWlCO1lBQ3hCLE1BQU0sRUFBRSx5QkFBeUI7WUFDakMsUUFBUSxFQUFFLGNBQWM7WUFDeEIsV0FBVyxFQUFFLDR2QkFBNHZCO1lBQ3p3QixJQUFJLEVBQUUsTUFBTTtZQUNaLFVBQVUsRUFBRSxFQUFFO1lBQ2QsTUFBTSxFQUFFLEtBQUs7WUFDYixLQUFLLEVBQUUsS0FBSztTQUNmLEVBQ0Q7WUFDSSxFQUFFLEVBQUUsQ0FBQztZQUNMLEtBQUssRUFBRSw0RUFBNEU7WUFDbkYsS0FBSyxFQUFFLFFBQVE7WUFDZixNQUFNLEVBQUUsY0FBYztZQUN0QixRQUFRLEVBQUUsY0FBYztZQUN4QixXQUFXLEVBQUUseWhCQUF5aEI7WUFDdGlCLElBQUksRUFBRSxNQUFNO1lBQ1osVUFBVSxFQUFFLEVBQUU7WUFDZCxNQUFNLEVBQUUsS0FBSztZQUNiLEtBQUssRUFBRSxLQUFLO1NBQ2YsRUFDRDtZQUNJLEVBQUUsRUFBRSxDQUFDO1lBQ0wsS0FBSyxFQUFFLHFG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O1FBRHZCLGlCQUFVLEVBQUU7O09BQ0EsV0FBVyxDQW1NdkI7SUFBRCxrQkFBQztDQUFBLEFBbk1ELElBbU1DO0FBbk1ZLGtDQUFXIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgSW5qZWN0YWJsZSB9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XG5pbXBvcnQgeyBCZWhhdmlvclN1YmplY3QsIE9ic2VydmFibGUgfSBmcm9tIFwicnhqc1wiO1xuaW1wb3J0IHsgZmlsdGVyLCBtYXAgfSBmcm9tIFwicnhqcy9vcGVyYXRvcnNcIjtcblxuZXhwb3J0IGludGVyZmFjZSBJRGF0YUl0ZW0ge1xuICAgIGF1dGhvcjogc3RyaW5nO1xuICAgIGNhcHRpb24/OiBzdHJpbmc7XG4gICAgZGF0ZTogRGF0ZSB8IHN0cmluZztcbiAgICBkZXNjcmlwdGlvbjogc3RyaW5nO1xuICAgIGlkOiBudW1iZXI7XG4gICAgaW1hZ2U6IHN0cmluZztcbiAgICBsaWtlZD86IGJvb2xlYW47XG4gICAgbG9jYXRpb246IHN0cmluZztcbiAgICBwb3B1bGFyaXR5Pzogc3RyaW5nIHwgbnVtYmVyO1xuICAgIHRpdGxlOiBzdHJpbmc7XG4gICAgdmlld2VkPzogYm9vbGVhbjtcbn1cblxuQEluamVjdGFibGUoKVxuZXhwb3J0IGNsYXNzIERhdGFTZXJ2aWNlIHtcblxuICAgIHByaXZhdGUgX2l0ZW1zJDogQmVoYXZpb3JTdWJqZWN0PEFycmF5PElEYXRhSXRlbT4+O1xuICAgIHByaXZhdGUgX2l0ZW1zID0gbmV3IEFycmF5PElEYXRhSXRlbT4oXG4gICAgICAgIHtcbiAgICAgICAgICAgIGlkOiAxLFxuICAgICAgICAgICAgaW1hZ2U6IFwiaHR0cHM6Ly9jZG4uZ2FsbGVyeXN0b3JlLnBsL3dvcmtzLy93Nzc3LWg3MDAvamFjZWstbWFsaW5vd3NraS10b3NrYW5pYS12YWwtZC1vcmNpYS0xLW1hbGFyc3R3by1vbGVqbmUuanBnXCIsXG4gICAgICAgICAgICB0aXRsZTogXCJUb3NrYW5pYVwiLFxuICAgICAgICAgICAgYXV0aG9yOiBcIkphY2VrIE1hbGlub3dza2lcIixcbiAgICAgICAgICAgIGxvY2F0aW9uOiBcIkdhbGxlcnlzdG9yZVwiLFxuICAgICAgICAgICAgZGVzY3JpcHRpb246IFwiT2JyYXogamVzdCB3eWrEhXRrb3fEhSBla3NwcmVzasSFIGFydHlzdHkuIFByYWNhIGplc3QgZGVkeWtvd2FueW0gcG9ydHJldGVtIENtaWxpIENvYmVsbG8uIEFic3RyYWtjeWpuYSBncmEgxZt3aWF0ZcWCIGkgY2llbmlhIHphIHBvbW9jxIUgNCBrb2xvcsOzdyBvZGRhamUgesWCb8W8b25vxZvEhyBqYWtpZSBjaGNpYcWCIG9zacSFZ27EhcSHIGFydHlzdGEgb3JheiBwcm9zdHkgcGFudG9uIGJhcncga3TDs3JlIGJ1ZHVqxIUgY2HFgsSFIG5hcnJhY2rEmS4gRHXFvMSFIHdhZ8SZIG1vxbxuYSB6YW9ic2Vyd293YcSHIHcgZGV0YWx1LCBwb25pZXdhxbwgamVzdCB0byBncmFmaWthIHdla3Rvcm93YSBtb8W8ZW15IGRvc3RyemVjIG5pZXR5cG93eSBkZXRhbCB3xYJvc8OzdyBvcmF6IMWbd2lhdMWCbywga3TDs3JlIHJvesWbd2lldGxhIGtvxYRjw7N3a2kuIE9icmF6IHByemVkc3Rhd2lhIHBpxJlrbm8ga29iaWV0eSwgb3JheiBkcnplbWnEhWPEhSBtYWdpxJkgamVqIHRlbXBlcmFtZW50dS4gWmltbmUgYmFyd3kgb2RkYWrEhSBjaMWCw7NkIGt0w7NyeSBzeW1ib2xpenVqZSDFvGFsIG1pxJlkenkgdWN6dWNpZW0gd3luaWthasSFY3ltIHogcm96c3RhbmlhLlwiLFxuICAgICAgICAgICAgZGF0ZTogXCIyMDE4XCIsXG4gICAgICAgICAgICBwb3B1bGFyaXR5OiA4MixcbiAgICAgICAgICAgIHZpZXdlZDogZmFsc2UsXG4gICAgICAgICAgICBsaWtlZDogZmFsc2VcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgICAgaWQ6IDIsXG4gICAgICAgICAgICBpbWFnZTogXCJodHRwczovL2Nkbi5nYWxsZXJ5c3RvcmUucGwvd29ya3MvL3c3NzctaDcwMC9qb2FubmEtc3VsZWstbWFsaW5vd3NrYS1jaHJvbW9zZmVyYS1paWktYWtyeWwuanBnXCIsXG4gICAgICAgICAgICB0aXRsZTogXCJDaHJvbW9zZmVyYSBJSUlcIixcbiAgICAgICAgICAgIGF1dGhvcjogXCJKb2FubmEgU3XFgmVrLU1hbGlub3dza2FcIixcbiAgICAgICAgICAgIGxvY2F0aW9uOiBcIkdhbGxlcnlzdG9yZVwiLFxuICAgICAgICAgICAgZGVzY3JpcHRpb246IFwiQ3lrbCBhYnN0cmFrY2ppIOKAnkNocm9tb3NmZXJ54oCdIGluc3Bpcm93YW55IGplc3Qgc8WCb8WEY2VtLCBwcnplc3RyemVuacSFIGtvc21pY3puxIUgb3JheiB6amF3aXNrYW1pIG1ldGVvcm9sb2dpY3pueW1pLiBDemFybmUgcGFzeSBzdWdlcnVqxIUgb2dyYW5pY3plbmllIG1pZXN6a2HFhGNhIHppZW1za2llZ28sIGt0w7NyeSBuaWUgbW/FvGUgd3puaWXFm8SHIHNpxJkgcG9uYWQgdG8gY28gd2lkemkgeiBkb8WCdS4gQmFyd255IMWbcm9kZWsgeiBzeW1ib2xpY3pueW0gc8WCb8WEY2VtIGx1YiBwbGFuZXTEhSB6bWllbmlhIGZvcm15IG9yYXoga29sb3J5IHcgemFsZcW8bm/Fm2NpIG9kIHBvcnkgZG5pYS4gT2JyYXp5IGJ1ZG93YW5lIHPEhSB6YSBwb21vY8SFIHDFgnlubnljaCBsaW5paSwgcHJ6ZW5pa2FqxIVjeWNoIHNpxJkgbmEgcMWCYXN6Y3p5xbpuaWUuIEN6xJlzdG8gdWvFgmFkeSBwcnplc3RyemVubmUgcm96xZt3aWV0bGFuZSBzxIUgxZt3aWF0xYJlbSBwYWRhasSFY3ltIHogbmllb2N6eXdpc3RlZ28gxbpyw7NkxYJhLiBVd3lkYXRuaWFqxIUgc2nEmSBhYnkgemEgY2h3aWzEmSB6YXBhxZvEhyBzacSZIHcgY3plcsWELiBQb3dpZXJ6Y2huaWEgb2JyYXrDs3cgcG9wcnpleiB3aWVsb2tyb3RuZSwgcHJlY3l6eWpuZSBuYWvFgmFkYW5pZSBwxYJhc2tpZWogcGxhbXksIHpkYWplIHNpxJkgYnnEhyBpZGVhbG5pZSBnxYJhZGthLiBEZWxpa2F0bmUgbGluaWUgcG9ka3JlxZtsYWrEhSBrcnVjaG/Fm8SHIHpqYXdpc2thIGEgamVkbm9jemXFm25pZSBzxIUgxYLEhWN6bmlraWVtIHBhc2EgYmFydyB6IGN6YXJuxIUgcHJ6ZXN0cnplbmnEhS5cIixcbiAgICAgICAgICAgIGRhdGU6IFwiMjAxNlwiLFxuICAgICAgICAgICAgcG9wdWxhcml0eTogNDEsXG4gICAgICAgICAgICB2aWV3ZWQ6IGZhbHNlLFxuICAgICAgICAgICAgbGlrZWQ6IGZhbHNlXG4gICAgICAgIH0sXG4gICAgICAgIHtcbiAgICAgICAgICAgIGlkOiAzLFxuICAgICAgICAgICAgaW1hZ2U6IFwiaHR0cHM6Ly9jZG4uZ2FsbGVyeXN0b3JlLnBsL3dvcmtzLy93Nzc3LWg3MDAvcGF3ZWwtZ29yc2tpLXNsaW1hay1ha3J5bC5qcGdcIixcbiAgICAgICAgICAgIHRpdGxlOiBcIsWabGltYWtcIixcbiAgICAgICAgICAgIGF1dGhvcjogXCJQYXdlxYIgR8OzcnNraVwiLFxuICAgICAgICAgICAgbG9jYXRpb246IFwiR2FsbGVyeXN0b3JlXCIsXG4gICAgICAgICAgICBkZXNjcmlwdGlvbjogXCJBYnN0cmFrY3lqbmEgcHJ6eXJvZGEsIHBpZWtubyBvdGFjemFqxIVjZWdvIG5hcyDFm3dpYXRhLCB3c3DDs8WCaXN0bmllbmllLiBBa3N0cmFrY3lqbnksIHBlxYJlbiBrb2xvcsOzdyBvYnJheiBha3J5bG93eSBuYSBwxYLDs3RuaWUgbG5pYW55bSB3eWtvbmFueSB3IHRlY2huaWNlIGVua2F1c3R5a2kuIEVua2F1c3R5a2EgdG8gdGVjaG5pa2EgcHJhY29jaMWCb25uYSwga3TDs3JhIHd5bWFnYSBvZCB0d8OzcmN5IG5ha8WCYWRhbmlhIGZhcmIgbmEgZ29yxIVjbyB3IHNwb2l3aWUgd29za3UgcHN6Y3plbGVnbyBsdWIgb2xlanUuIER6acSZa2kgdGFraW0gemFiaWVnb20gcG96d2FsYSB1enlza2HEhyB0cndhxYJlIGkgb2Rwb3JuZSBuYSB3aWxnb8SHIHJlenVsdGF0eSwgYSB0YWvFvGUgemFjaG93YcSHIGfFgsSZYmnEmSBpIGJsYXNrIHphc3Rvc293YW5laiBwYWxldHkga29sb3J5c3R5Y3puZWouIFByYWNhIGRvZGEgY2hhdGFrdGVydSBwcnplc3Ryb25ueW0gd25ldHJ6b20uIE9icmF6IHNwcmF3ZHppIHNpxJkgdyBiaXVyemUgb3JheiB3IGR1xbx5bSwgamFzbnltIHNhbG9uaWUuXCIsXG4gICAgICAgICAgICBkYXRlOiBcIjIwMTVcIixcbiAgICAgICAgICAgIHBvcHVsYXJpdHk6IDU1LFxuICAgICAgICAgICAgdmlld2VkOiBmYWxzZSxcbiAgICAgICAgICAgIGxpa2VkOiBmYWxzZVxuICAgICAgICB9LFxuICAgICAgICB7XG4gICAgICAgICAgICBpZDogNCxcbiAgICAgICAgICAgIGltYWdlOiBcImh0dHBzOi8vY2RuLmdhbGxlcnlzdG9yZS5wbC93b3Jrcy8vdzc3Ny1oNzAwL3Bhd2VsLXBvcmFkYS1kYW1hLW1hbGFyc3R3by1vbGVqbmUuanBnXCIsXG4gICAgICAgICAgICB0aXRsZTogXCJEYW1hXCIsXG4gICAgICAgICAgICBhdXRob3I6IFwiUGF3ZcWCIFBvcmFkYVwiLFxuICAgICAgICAgICAgbG9jYXRpb246IFwiR2FsbGVyeXN0b3JlXCIsXG4gICAgICAgICAgICBkZXNjcmlwdGlvbjogXCJPYnJheiBcXFwiZGFtYVxcXCIgem9zdGHFgiBuYW1hbG93YW55IG5hIHDFgsOzdG5pZSAzRCAtIGdydWJzemEgcmFtYSwgbyB3eW1pYXJhY2ggNTB4NTBjbSwgZmFyYmFtaSBvbGVqbnltaS4gTWFsb3dpZMWCbyBwcnplZHN0YXdpYSBrb2JpZXTEmSB6IGtsYXPEhSBuYSB0bGUgeiBib2dhdMSFIG9ybmFtZW50eWvEhS4gQmFyZHpvIGtvbG9yb3d5LCB6YnVkb3dhbnkgeiBwcm9zdHljaCBmb3JtIGkga3N6dGHFgnTDs3cuIEtsaW1hdGVtIGxla2tvIG5hd2nEhXp1amUgZG8gZGF3bmllanN6eWNoIGVwb2sgbHViIGRvIGRhbXkgeiB0YWxpaSBrYXJ0LiBQb3J0cmV0IGlkZWFsbmllIHphZ3JhIHcga2HFvGR5bSB3bsSZdHJ6dSBhbGUgaSByw7N3bmllxbwgcG9ka3JlxZtsaSBrYXJjaWFuZSB1cG9kb2JhbmlhLCBob2JieSBoaXN0b3J5Y3puZSBsdWIgcm96cnl3a293eSBjaGFyYWt0ZXIgb3NvYnkga3TDs3JhIGdvIHpha3VwaS4gU3lnbm93YW55IHogcHJ6b2R1IG5hendpc2tpZW0gaSBkYXTEhSBwb3dzdGFuaWEuIFd5a29uYW55IHcgcG9qZWR5bmN6eW0gZWd6ZW1wbGFyenUgY28gendpxJlrc3phIGplZ28gd2FydG/Fm8SHIGtvbGVrY2pvbmVyc2vEhS5cIixcbiAgICAgICAgICAgIGRhdGU6IFwiMjAxOFwiLFxuICAgICAgICAgICAgcG9wdWxhcml0eTogNjMsXG4gICAgICAgICAgICB2aWV3ZWQ6IGZhbHNlLFxuICAgICAgICAgICAgbGlrZWQ6IGZhbHNlXG4gICAgICAgIH0sXG4gICAgICAgIHtcbiAgICAgICAgICAgIGlkOiA1LFxuICAgICAgICAgICAgaW1hZ2U6IFwiaHR0cHM6Ly9jZG4uZ2FsbGVyeXN0b3JlLnBsL3dvcmtzLy93Nzc3LWg3MDAvaXphLWtvc3RpdWtvdy1zbGFkeS00LW1hbGFyc3R3by1vbGVqbmUuanBnXCIsXG4gICAgICAgICAgICB0aXRsZTogXCLFmmxhZHkgNFwiLFxuICAgICAgICAgICAgYXV0aG9yOiBcIkl6YSBLb3N0aXVrb3dcIixcbiAgICAgICAgICAgIGxvY2F0aW9uOiBcIkdhbGxlcnlzdG9yZVwiLFxuICAgICAgICAgICAgZGVzY3JpcHRpb246IFwiQWJzdHJha2N5am55IG9icmF6IG5hbWFsb3dhbnkgdyB0ZWNobmljZSBvbGVqbmVqLiBwcmFjYSBuaWUgd3ltYWdhIHJhbXkgLCBrcmF3xJlkemllIHDFgsOzdG5hIHPEhSB6YW1hbG93YW5lLiBQcmFjYSBqZXN0IHphYmV6cGllY3pvbmEgd2Vybmlrc2VtIHNhdHlub3d5bS4gb2JyYXogamVzdCBzeWdub3dhbnkgeiB0ecWCdSBvYnJheiBqZXN0IGN6xJnFm2NpxIUgY3lrbHUgbWFsYXJza2llZ28gXFxcIiDFmmxhZHlcXFwiLCBwb3dzdGHFgmVnbyB3IDIwMTQgcm9rdS4gUHJhY2EgbW/FvGUgYnnEhyBkb2JyeW0gcHJlemVudGVtIG5wLiBuYSDFm2x1Yi5cIixcbiAgICAgICAgICAgIGRhdGU6IFwiMjAxNFwiLFxuICAgICAgICAgICAgcG9wdWxhcml0eTogMTUsXG4gICAgICAgICAgICB2aWV3ZWQ6IGZhbHNlLFxuICAgICAgICAgICAgbGlrZWQ6IGZhbHNlXG4gICAgICAgIH0sXG4gICAgICAgIHtcbiAgICAgICAgICAgIGlkOiA2LFxuICAgICAgICAgICAgaW1hZ2U6IFwiaHR0cHM6Ly9pLnBpbmltZy5jb20vNzM2eC82My83YS9hOS82MzdhYTk1M2FhOTFjZDBlYjNhMWIzNWFkMDY1YjJlMS0tcm9tYW50aWNpc20tdml0YW1pbi5qcGdcIixcbiAgICAgICAgICAgIHRpdGxlOiBcIk8gxZttaWVyY2kgc8SFc2lhZGFcIixcbiAgICAgICAgICAgIGF1dGhvcjogXCJaYmlnbmlldyBSb2dhbHNraVwiLFxuICAgICAgICAgICAgbG9jYXRpb246IFwiUmFzdGVyIGdhbGxlcnlcIixcbiAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBcIk9icmF6IHphaW5zcGlyb3dhbnkgYXV0ZW50eWN6bnltIHpkYXJ6ZW5pZW0gLSDFm21pZXJjacSFIHPEhXNpYWRhIG1hbGFyemEuIENpYcWCbyB6bWFyxYJlZ28gem9zdGHFgm8gb2RuYWxlemlvbmUgZG9waWVybyBwbyBraWxrdSBkbmlhY2ggb2QgemdvbnUgdyBtaWVzemthbml1LCBrdMOzcmUgcHJ6eWxlZ2HFgm8gZG8gcHJhY293bmkgaSBtaWVzemthbmlhIFJvZ2Fsc2tpZWdvLlwiLFxuICAgICAgICAgICAgZGF0ZTogXCIyMDE3XCIsXG4gICAgICAgICAgICBwb3B1bGFyaXR5OiAyMSxcbiAgICAgICAgICAgIHZpZXdlZDogZmFsc2UsXG4gICAgICAgICAgICBsaWtlZDogZmFsc2VcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgICAgaWQ6IDcsXG4gICAgICAgICAgICBpbWFnZTogXCJodHRwczovL2ltZzEub25lYmlkLnBsL2ltZy8yMTYvMzM4ODlfMWIuanBnXCIsXG4gICAgICAgICAgICB0aXRsZTogXCJQb3N0ZXIgZm9yIFxcXCJKQVpaIEphbWJvcmVlIDcwXFxcIlwiLFxuICAgICAgICAgICAgYXV0aG9yOiBcIkphbiBNxYJvZG/FvGVuaWVjXCIsXG4gICAgICAgICAgICBsb2NhdGlvbjogXCJPc3RveWFcIixcbiAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBcIk9icmF6IFxcXCJkYW1hXFxcIiB6b3N0YcWCIG5hbWFsb3dhbnkgbmEgcMWCw7N0bmllIDNEIC0gZ3J1YnN6YSByYW1hLCBvIHd5bWlhcmFjaCA1MHg1MGNtLCBmYXJiYW1pIG9sZWpueW1pLiBNYWxvd2lkxYJvIHByemVkc3Rhd2lhIGtvYmlldMSZIHoga2xhc8SFIG5hIHRsZSB6IGJvZ2F0xIUgb3JuYW1lbnR5a8SFLiBCYXJkem8ga29sb3Jvd3ksIHpidWRvd2FueSB6IHByb3N0eWNoIGZvcm0gaSBrc3p0YcWCdMOzdy4gS2xpbWF0ZW0gbGVra28gbmF3acSFenVqZSBkbyBkYXduaWVqc3p5Y2ggZXBvayBsdWIgZG8gZGFteSB6IHRhbGlpIGthcnQuIFBvcnRyZXQgaWRlYWxuaWUgemFncmEgdyBrYcW8ZHltIHduxJl0cnp1IGFsZSBpIHLDs3duaWXFvCBwb2RrcmXFm2xpIGthcmNpYW5lIHVwb2RvYmFuaWEsIGhvYmJ5IGhpc3Rvcnljem5lIGx1YiByb3pyeXdrb3d5IGNoYXJha3RlciBvc29ieSBrdMOzcmEgZ28gemFrdXBpLiBTeWdub3dhbnkgeiBwcnpvZHUgbmF6d2lza2llbSBpIGRhdMSFIHBvd3N0YW5pYS4gV3lrb25hbnkgdyBwb2plZHluY3p5bSBlZ3plbXBsYXJ6dSBjbyB6d2nEmWtzemEgamVnbyB3YXJ0b8WbxIcga29sZWtjam9uZXJza8SFLlwiLFxuICAgICAgICAgICAgZGF0ZTogXCIxOTcwXCIsXG4gICAgICAgICAgICBwb3B1bGFyaXR5OiA5OCxcbiAgICAgICAgICAgIHZpZXdlZDogZmFsc2UsXG4gICAgICAgICAgICBsaWtlZDogZmFsc2VcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgICAgaWQ6IDgsXG4gICAgICAgICAgICBpbWFnZTogXCJodHRwczovL3VwbG9hZHMzLndpa2lhcnQub3JnLzAwMTQ1L2ltYWdlcy93aWxoZWxtLXNhc25hbC9zaG9haC1mb3Jlc3QtMjAwMy5qcGchTGFyZ2UuanBnXCIsXG4gICAgICAgICAgICB0aXRsZTogXCJGb3Jlc3RcIixcbiAgICAgICAgICAgIGF1dGhvcjogXCJXaWxoZWxtIFNhc25hbFwiLFxuICAgICAgICAgICAgbG9jYXRpb246IFwiV2hpdGVjaGFwZWwgR2FsbGVyeVwiLFxuICAgICAgICAgICAgZGVzY3JpcHRpb246IFwiT2JyYXogXFxcImRhbWFcXFwiIHpvc3RhxYIgbmFtYWxvd2FueSBuYSBwxYLDs3RuaWUgM0QgLSBncnVic3phIHJhbWEsIG8gd3ltaWFyYWNoIDUweDUwY20sIGZhcmJhbWkgb2xlam55bWkuIE1hbG93aWTFgm8gcHJ6ZWRzdGF3aWEga29iaWV0xJkgeiBrbGFzxIUgbmEgdGxlIHogYm9nYXTEhSBvcm5hbWVudHlrxIUuIEJhcmR6byBrb2xvcm93eSwgemJ1ZG93YW55IHogcHJvc3R5Y2ggZm9ybSBpIGtzenRhxYJ0w7N3LiBLbGltYXRlbSBsZWtrbyBuYXdpxIV6dWplIGRvIGRhd25pZWpzenljaCBlcG9rIGx1YiBkbyBkYW15IHogdGFsaWkga2FydC4gUG9ydHJldCBpZGVhbG5pZSB6YWdyYSB3IGthxbxkeW0gd27EmXRyenUgYWxlIGkgcsOzd25pZcW8IHBvZGtyZcWbbGkga2FyY2lhbmUgdXBvZG9iYW5pYSwgaG9iYnkgaGlzdG9yeWN6bmUgbHViIHJvenJ5d2tvd3kgY2hhcmFrdGVyIG9zb2J5IGt0w7NyYSBnbyB6YWt1cGkuIFN5Z25vd2FueSB6IHByem9kdSBuYXp3aXNraWVtIGkgZGF0xIUgcG93c3RhbmlhLiBXeWtvbmFueSB3IHBvamVkeW5jenltIGVnemVtcGxhcnp1IGNvIHp3acSZa3N6YSBqZWdvIHdhcnRvxZvEhyBrb2xla2Nqb25lcnNrxIUuXCIsXG4gICAgICAgICAgICBkYXRlOiBcIjIwMDJcIixcbiAgICAgICAgICAgIHBvcHVsYXJpdHk6IDQ1LFxuICAgICAgICAgICAgdmlld2VkOiBmYWxzZSxcbiAgICAgICAgICAgIGxpa2VkOiBmYWxzZVxuICAgICAgICB9LFxuICAgICAgICB7XG4gICAgICAgICAgICBpZDogOSxcbiAgICAgICAgICAgIGltYWdlOiBcImh0dHBzOi8vZDV3dDcwZDRnbm0xdC5jbG91ZGZyb250Lm5ldC9tZWRpYS9hLXMvYXJ0aWNsZXMvMjI0My04MTgxNzU4MTk0Mzkvd2lsaGVsbS1zYXNuYWwtOTAweDQ1MC5wbmdcIixcbiAgICAgICAgICAgIHRpdGxlOiBcIkJhdGhlcnMgYXQgQXNuaWVyZXMsXCIsXG4gICAgICAgICAgICBhdXRob3I6IFwiV2lsaGVsbSBTYXNuYWxcIixcbiAgICAgICAgICAgIGxvY2F0aW9uOiBcIkZva3NhbCBHYWxsZXJ5IEZvdW5kYXRpb24gVmFyc292aWVcIixcbiAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBcIk9icmF6IFxcXCJkYW1hXFxcIiB6b3N0YcWCIG5hbWFsb3dhbnkgbmEgcMWCw7N0bmllIDNEIC0gZ3J1YnN6YSByYW1hLCBvIHd5bWlhcmFjaCA1MHg1MGNtLCBmYXJiYW1pIG9sZWpueW1pLiBNYWxvd2lkxYJvIHByemVkc3Rhd2lhIGtvYmlldMSZIHoga2xhc8SFIG5hIHRsZSB6IGJvZ2F0xIUgb3JuYW1lbnR5a8SFLiBCYXJkem8ga29sb3Jvd3ksIHpidWRvd2FueSB6IHByb3N0eWNoIGZvcm0gaSBrc3p0YcWCdMOzdy4gS2xpbWF0ZW0gbGVra28gbmF3acSFenVqZSBkbyBkYXduaWVqc3p5Y2ggZXBvayBsdWIgZG8gZGFteSB6IHRhbGlpIGthcnQuIFBvcnRyZXQgaWRlYWxuaWUgemFncmEgdyBrYcW8ZHltIHduxJl0cnp1IGFsZSBpIHLDs3duaWXFvCBwb2RrcmXFm2xpIGthcmNpYW5lIHVwb2RvYmFuaWEsIGhvYmJ5IGhpc3Rvcnljem5lIGx1YiByb3pyeXdrb3d5IGNoYXJha3RlciBvc29ieSBrdMOzcmEgZ28gemFrdXBpLiBTeWdub3dhbnkgeiBwcnpvZHUgbmF6d2lza2llbSBpIGRhdMSFIHBvd3N0YW5pYS4gV3lrb25hbnkgdyBwb2plZHluY3p5bSBlZ3plbXBsYXJ6dSBjbyB6d2nEmWtzemEgamVnbyB3YXJ0b8WbxIcga29sZWtjam9uZXJza8SFLlwiLFxuICAgICAgICAgICAgZGF0ZTogXCIyMDEwXCIsXG4gICAgICAgICAgICBwb3B1bGFyaXR5OiA4MSxcbiAgICAgICAgICAgIHZpZXdlZDogZmFsc2UsXG4gICAgICAgICAgICBsaWtlZDogZmFsc2VcbiAgICAgICAgfSxcbiAgICAgICAge1xuICAgICAgICAgICAgaWQ6IDEwLFxuICAgICAgICAgICAgaW1hZ2U6IFwiaHR0cHM6Ly9jZG4uZ2FsbGVyeXN0b3JlLnBsL3dvcmtzLy93Nzc3LWg3MDAvYWRhbS10d2FyZG93c2tpLWNhbWlsYS1ncmFmaWthLmpwZ1wiLFxuICAgICAgICAgICAgdGl0bGU6IFwiQ2FtaWxhXCIsXG4gICAgICAgICAgICBhdXRob3I6IFwiQWRhbSBUd2FyZG93c2tpXCIsXG4gICAgICAgICAgICBsb2NhdGlvbjogXCJHYWxsZXJ5c3RvcmVcIixcbiAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBcIk9icmF6IGplc3Qgd3lqxIV0a293xIUgZWtzcHJlc2rEhSBhcnR5c3R5LiBQcmFjYSBqZXN0IGRlZHlrb3dhbnltIHBvcnRyZXRlbSBDbWlsaSBDb2JlbGxvLiBBYnN0cmFrY3lqbmEgZ3JhIMWbd2lhdGXFgiBpIGNpZW5pYSB6YSBwb21vY8SFIDQga29sb3LDs3cgb2RkYWplIHrFgm/FvG9ub8WbxIcgamFraWUgY2hjaWHFgiBvc2nEhWduxIXEhyBhcnR5c3RhIG9yYXogcHJvc3R5IHBhbnRvbiBiYXJ3IGt0w7NyZSBidWR1asSFIGNhxYLEhSBuYXJyYWNqxJkuIER1xbzEhSB3YWfEmSBtb8W8bmEgemFvYnNlcndvd2HEhyB3IGRldGFsdSwgcG9uaWV3YcW8IGplc3QgdG8gZ3JhZmlrYSB3ZWt0b3Jvd2EgbW/FvGVteSBkb3N0cnplYyBuaWV0eXBvd3kgZGV0YWwgd8WCb3PDs3cgb3JheiDFm3dpYXTFgm8sIGt0w7NyZSByb3rFm3dpZXRsYSBrb8WEY8Ozd2tpLiBPYnJheiBwcnplZHN0YXdpYSBwacSZa25vIGtvYmlldHksIG9yYXogZHJ6ZW1pxIVjxIUgbWFnacSZIGplaiB0ZW1wZXJhbWVudHUuIFppbW5lIGJhcnd5IG9kZGFqxIUgY2jFgsOzZCBrdMOzcnkgc3ltYm9saXp1amUgxbxhbCBtacSZZHp5IHVjenVjaWVtIHd5bmlrYWrEhWN5bSB6IHJvenN0YW5pYS5cIixcbiAgICAgICAgICAgIGRhdGU6IFwiMjAxOFwiLFxuICAgICAgICAgICAgcG9wdWxhcml0eTogNjMsXG4gICAgICAgICAgICB2aWV3ZWQ6IGZhbHNlLFxuICAgICAgICAgICAgbGlrZWQ6IGZhbHNlXG4gICAgICAgIH0sXG4gICAgICAgIHtcbiAgICAgICAgICAgIGlkOiAxMSxcbiAgICAgICAgICAgIGltYWdlOiBcImh0dHBzOi8vY2RuLmdhbGxlcnlzdG9yZS5wbC93b3Jrcy8vdzIwMDAtaDIwMDAvYW5uYS16YWJpZWxza2EtYWt0LWtvYmllY3ktYWt3YXJlbGEuanBnXCIsXG4gICAgICAgICAgICB0aXRsZTogXCJDYW1pbGFcIixcbiAgICAgICAgICAgIGF1dGhvcjogXCJBZGFtIFR3YXJkb3dza2lcIixcbiAgICAgICAgICAgIGxvY2F0aW9uOiBcIkdhbGxlcnlzdG9yZVwiLFxuICAgICAgICAgICAgZGVzY3JpcHRpb246IFwiT2JyYXogamVzdCB3eWrEhXRrb3fEhSBla3NwcmVzasSFIGFydHlzdHkuIFByYWNhIGplc3QgZGVkeWtvd2FueW0gcG9ydHJldGVtIENtaWxpIENvYmVsbG8uIEFic3RyYWtjeWpuYSBncmEgxZt3aWF0ZcWCIGkgY2llbmlhIHphIHBvbW9jxIUgNCBrb2xvcsOzdyBvZGRhamUgesWCb8W8b25vxZvEhyBqYWtpZSBjaGNpYcWCIG9zacSFZ27EhcSHIGFydHlzdGEgb3JheiBwcm9zdHkgcGFudG9uIGJhcncga3TDs3JlIGJ1ZHVqxIUgY2HFgsSFIG5hcnJhY2rEmS4gRHXFvMSFIHdhZ8SZIG1vxbxuYSB6YW9ic2Vyd293YcSHIHcgZGV0YWx1LCBwb25pZXdhxbwgamVzdCB0byBncmFmaWthIHdla3Rvcm93YSBtb8W8ZW15IGRvc3RyemVjIG5pZXR5cG93eSBkZXRhbCB3xYJvc8OzdyBvcmF6IMWbd2lhdMWCbywga3TDs3JlIHJvesWbd2lldGxhIGtvxYRjw7N3a2kuIE9icmF6IHByemVkc3Rhd2lhIHBpxJlrbm8ga29iaWV0eSwgb3JheiBkcnplbWnEhWPEhSBtYWdpxJkgamVqIHRlbXBlcmFtZW50dS4gWmltbmUgYmFyd3kgb2RkYWrEhSBjaMWCw7NkIGt0w7NyeSBzeW1ib2xpenVqZSDFvGFsIG1pxJlkenkgdWN6dWNpZW0gd3luaWthasSFY3ltIHogcm96c3RhbmlhLlwiLFxuICAgICAgICAgICAgZGF0ZTogXCIyMDE4XCIsXG4gICAgICAgICAgICBwb3B1bGFyaXR5OiA2MyxcbiAgICAgICAgICAgIHZpZXdlZDogZmFsc2UsXG4gICAgICAgICAgICBsaWtlZDogZmFsc2VcbiAgICAgICAgfVxuXG4gICAgKTtcblxuICAgIGNvbnN0cnVjdG9yKCkge1xuICAgICAgICB0aGlzLl9pdGVtcyQgPSBuZXcgQmVoYXZpb3JTdWJqZWN0PEFycmF5PElEYXRhSXRlbT4+KHRoaXMuY2xvbmVJdGVtcygpKTtcbiAgICB9XG5cbiAgICBnZXRJdGVtcygpOiBBcnJheTxJRGF0YUl0ZW0+IHtcbiAgICAgICAgcmV0dXJuIHRoaXMuX2l0ZW1zJC5nZXRWYWx1ZSgpO1xuICAgIH1cblxuICAgIGdldEl0ZW0oaWQ6IG51bWJlcik6IElEYXRhSXRlbSB7XG4gICAgICAgIHJldHVybiB0aGlzLl9pdGVtcyQuZ2V0VmFsdWUoKS5maW5kKChkYXRhKSA9PiB7XG4gICAgICAgICAgICByZXR1cm4gZGF0YS5pZCA9PSBpZDtcbiAgICAgICAgfSk7XG4gICAgfVxuXG4gICAgZ2V0SW5kZXgoaXRlbTogSURhdGFJdGVtKTogbnVtYmVyIHtcbiAgICAgICAgcmV0dXJuIHRoaXMuZ2V0SXRlbXMoKS5maW5kSW5kZXgoKGVsZW1lbnQpID0+IGVsZW1lbnQuaWQgPT09IGl0ZW0uaWQpO1xuICAgIH1cblxuICAgIGdldFVuc2Vlbkl0ZW1zJCgpOiBPYnNlcnZhYmxlPEFycmF5PElEYXRhSXRlbT4+IHtcbiAgICAgICAgcmV0dXJuIHRoaXMuX2l0ZW1zJC5hc09ic2VydmFibGUoKVxuICAgICAgICAgICAgLnBpcGUobWFwKChpdGVtczogQXJyYXk8SURhdGFJdGVtPikgPT4gaXRlbXMuZmlsdGVyKChpdGVtOiBJRGF0YUl0ZW0pID0+ICFpdGVtLnZpZXdlZCkpKTtcbiAgICB9XG5cbiAgICBnZXRVbnNlZW5JdGVtcygpOiBBcnJheTxJRGF0YUl0ZW0+IHtcbiAgICAgICAgcmV0dXJuIHRoaXMuX2l0ZW1zJC5nZXRWYWx1ZSgpLmZpbHRlcigoaXRlbTogSURhdGFJdGVtKSA9PiAhaXRlbS52aWV3ZWQpO1xuICAgIH1cblxuICAgIGdldExpa2VkSXRlbXMkKCk6IE9ic2VydmFibGU8QXJyYXk8SURhdGFJdGVtPj4ge1xuICAgICAgICByZXR1cm4gdGhpcy5faXRlbXMkLmFzT2JzZXJ2YWJsZSgpXG4gICAgICAgICAgICAucGlwZShtYXAoKGl0ZW1zOiBBcnJheTxJRGF0YUl0ZW0+KSA9PiBpdGVtcy5maWx0ZXIoKGl0ZW06IElEYXRhSXRlbSkgPT4gaXRlbS5saWtlZCA9PT0gdHJ1ZSkpKTtcbiAgICB9XG5cbiAgICBnZXRMaWtlZEl0ZW1zKCk6IEFycmF5PElEYXRhSXRlbT4ge1xuICAgICAgICByZXR1cm4gdGhpcy5faXRlbXMkLmdldFZhbHVlKCkuZmlsdGVyKChpdGVtOiBJRGF0YUl0ZW0pID0+IGl0ZW0ubGlrZWQpO1xuICAgIH1cblxuICAgIHVwZGF0ZUl0ZW0oaXRlbTogSURhdGFJdGVtKTogdm9pZCB7XG4gICAgICAgIGNvbnN0IGl0ZW1zID0gdGhpcy5nZXRJdGVtcygpO1xuICAgICAgICBpdGVtc1t0aGlzLmdldEluZGV4KGl0ZW0pXSA9IGl0ZW07XG4gICAgICAgIHRoaXMuX2l0ZW1zJC5uZXh0KGl0ZW1zKTtcbiAgICB9XG5cbiAgICBkaXNsaWtlKGl0ZW06IElEYXRhSXRlbSk6IHZvaWQge1xuICAgICAgICBpdGVtLmxpa2VkID0gZmFsc2U7XG4gICAgICAgIGNvbnN0IGl0ZW1zID0gdGhpcy5nZXRJdGVtcygpO1xuICAgICAgICBpdGVtc1t0aGlzLmdldEluZGV4KGl0ZW0pXSA9IGl0ZW07XG4gICAgICAgIHRoaXMuX2l0ZW1zJC5uZXh0KGl0ZW1zKTtcbiAgICB9XG5cbiAgICByZXNldEl0ZW1zKCk6IHZvaWQge1xuICAgICAgICB0aGlzLl9pdGVtcyQubmV4dCh0aGlzLmNsb25lSXRlbXMoKSk7XG4gICAgfVxuXG4gICAgcHJpdmF0ZSBjbG9uZUl0ZW1zKCk6IEFycmF5PElEYXRhSXRlbT4ge1xuICAgICAgICByZXR1cm4gSlNPTi5wYXJzZShKU09OLnN0cmluZ2lmeSh0aGlzLl9pdGVtcykpO1xuICAgIH1cbn1cbiJdfQ==

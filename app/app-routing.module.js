@@ -1,0 +1,31 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = require("@angular/core");
+var router_1 = require("nativescript-angular/router");
+var home_component_1 = require("./home/home.component");
+var item_detail_component_1 = require("./item-detail/item-detail.component");
+var favorites_list_component_1 = require("./favorites-list/favorites-list.component");
+exports.COMPONENTS = [
+    home_component_1.HomeComponent,
+    item_detail_component_1.ItemDetailComponent,
+    favorites_list_component_1.FavoritesListComponent
+];
+var routes = [
+    { path: "", redirectTo: "/(homeTab:home//favoritesTab:favorites)", pathMatch: "full" },
+    { path: "home", component: home_component_1.HomeComponent, outlet: "homeTab" },
+    { path: "favorites", component: favorites_list_component_1.FavoritesListComponent, outlet: "favoritesTab" },
+    { path: "item", component: item_detail_component_1.ItemDetailComponent, outlet: "favoritesTab" }
+];
+var AppRoutingModule = /** @class */ (function () {
+    function AppRoutingModule() {
+    }
+    AppRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.NativeScriptRouterModule.forRoot(routes)],
+            exports: [router_1.NativeScriptRouterModule]
+        })
+    ], AppRoutingModule);
+    return AppRoutingModule;
+}());
+exports.AppRoutingModule = AppRoutingModule;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiYXBwLXJvdXRpbmcubW9kdWxlLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiYXBwLXJvdXRpbmcubW9kdWxlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7O0FBQUEsc0NBQXlDO0FBRXpDLHNEQUF1RTtBQUV2RSx3REFBc0Q7QUFDdEQsNkVBQTBFO0FBQzFFLHNGQUFtRjtBQUV0RSxRQUFBLFVBQVUsR0FBRztJQUN0Qiw4QkFBYTtJQUNiLDJDQUFtQjtJQUNuQixpREFBc0I7Q0FDekIsQ0FBQztBQUVGLElBQU0sTUFBTSxHQUFXO0lBQ25CLEVBQUUsSUFBSSxFQUFFLEVBQUUsRUFBRSxVQUFVLEVBQUUseUNBQXlDLEVBQUUsU0FBUyxFQUFFLE1BQU0sRUFBRTtJQUV0RixFQUFFLElBQUksRUFBRSxNQUFNLEVBQUUsU0FBUyxFQUFFLDhCQUFhLEVBQUUsTUFBTSxFQUFFLFNBQVMsRUFBRTtJQUM3RCxFQUFFLElBQUksRUFBRSxXQUFXLEVBQUUsU0FBUyxFQUFFLGlEQUFzQixFQUFFLE1BQU0sRUFBRSxjQUFjLEVBQUU7SUFDaEYsRUFBRSxJQUFJLEVBQUUsTUFBTSxFQUFFLFNBQVMsRUFBRSwyQ0FBbUIsRUFBRSxNQUFNLEVBQUUsY0FBYyxFQUFFO0NBQzNFLENBQUM7QUFNRjtJQUFBO0lBQWdDLENBQUM7SUFBcEIsZ0JBQWdCO1FBSjVCLGVBQVEsQ0FBQztZQUNOLE9BQU8sRUFBRSxDQUFDLGlDQUF3QixDQUFDLE9BQU8sQ0FBQyxNQUFNLENBQUMsQ0FBQztZQUNuRCxPQUFPLEVBQUUsQ0FBQyxpQ0FBd0IsQ0FBQztTQUN0QyxDQUFDO09BQ1csZ0JBQWdCLENBQUk7SUFBRCx1QkFBQztDQUFBLEFBQWpDLElBQWlDO0FBQXBCLDRDQUFnQiIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IE5nTW9kdWxlIH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcbmltcG9ydCB7IFJvdXRlcyB9IGZyb20gXCJAYW5ndWxhci9yb3V0ZXJcIjtcbmltcG9ydCB7IE5hdGl2ZVNjcmlwdFJvdXRlck1vZHVsZSB9IGZyb20gXCJuYXRpdmVzY3JpcHQtYW5ndWxhci9yb3V0ZXJcIjtcblxuaW1wb3J0IHsgSG9tZUNvbXBvbmVudCB9IGZyb20gXCIuL2hvbWUvaG9tZS5jb21wb25lbnRcIjtcbmltcG9ydCB7IEl0ZW1EZXRhaWxDb21wb25lbnQgfSBmcm9tIFwiLi9pdGVtLWRldGFpbC9pdGVtLWRldGFpbC5jb21wb25lbnRcIjtcbmltcG9ydCB7IEZhdm9yaXRlc0xpc3RDb21wb25lbnQgfSBmcm9tIFwiLi9mYXZvcml0ZXMtbGlzdC9mYXZvcml0ZXMtbGlzdC5jb21wb25lbnRcIjtcblxuZXhwb3J0IGNvbnN0IENPTVBPTkVOVFMgPSBbXG4gICAgSG9tZUNvbXBvbmVudCxcbiAgICBJdGVtRGV0YWlsQ29tcG9uZW50LFxuICAgIEZhdm9yaXRlc0xpc3RDb21wb25lbnRcbl07XG5cbmNvbnN0IHJvdXRlczogUm91dGVzID0gW1xuICAgIHsgcGF0aDogXCJcIiwgcmVkaXJlY3RUbzogXCIvKGhvbWVUYWI6aG9tZS8vZmF2b3JpdGVzVGFiOmZhdm9yaXRlcylcIiwgcGF0aE1hdGNoOiBcImZ1bGxcIiB9LFxuXG4gICAgeyBwYXRoOiBcImhvbWVcIiwgY29tcG9uZW50OiBIb21lQ29tcG9uZW50LCBvdXRsZXQ6IFwiaG9tZVRhYlwiIH0sXG4gICAgeyBwYXRoOiBcImZhdm9yaXRlc1wiLCBjb21wb25lbnQ6IEZhdm9yaXRlc0xpc3RDb21wb25lbnQsIG91dGxldDogXCJmYXZvcml0ZXNUYWJcIiB9LFxuICAgIHsgcGF0aDogXCJpdGVtXCIsIGNvbXBvbmVudDogSXRlbURldGFpbENvbXBvbmVudCwgb3V0bGV0OiBcImZhdm9yaXRlc1RhYlwiIH1cbl07XG5cbkBOZ01vZHVsZSh7XG4gICAgaW1wb3J0czogW05hdGl2ZVNjcmlwdFJvdXRlck1vZHVsZS5mb3JSb290KHJvdXRlcyldLFxuICAgIGV4cG9ydHM6IFtOYXRpdmVTY3JpcHRSb3V0ZXJNb2R1bGVdXG59KVxuZXhwb3J0IGNsYXNzIEFwcFJvdXRpbmdNb2R1bGUgeyB9XG4iXX0=
