@@ -11,3 +11,5 @@ Native Script Painting Viewer Angular for Android or IOS
 
 5. You will need to verify QR code from cli with your mobile phone to preview this new app. 
 
+6. Check out Native Script documents here : https://docs.nativescript.org/?_ga=2.95034716.1113870636.1550499702-123545271.1550499702
+
